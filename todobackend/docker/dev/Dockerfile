@@ -1,10 +1,10 @@
-FROM bujarbakiu/todo:latest
+FROM bujarbakiu/todo:0.2
 
 LABEL author=bujarbakiu
 
 # Install dev/build dependencies
 RUN apt-get update && \
-    apt-get install -qy python-dev
+    apt-get install -qy python-dev libmysqlclient-dev
 
 # Activate virtual env and install wheel support
 RUN . /appdev/bin/activate && \
