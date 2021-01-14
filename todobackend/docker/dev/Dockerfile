@@ -1,4 +1,4 @@
-FROM bujarbakiu/todo:0.2
+FROM bujarbakiu/todo:latest
 
 LABEL author=bujarbakiu
 
@@ -7,8 +7,7 @@ RUN apt-get update && \
     apt-get install -qy python-dev libmysqlclient-dev
 
 # Activate virtual env and install wheel support
-RUN . /appdev/bin/activate && \
-    pip install wheel --upgrade
+RUN pip install wheel --upgrade
 
 # PIP envrionment varibales 
 ENV WHEELHOSE=/wheelhouse PIP_WHEEL_DIR=/wheelhouse PIP_FIND_LINKS=/wheelhouse XDG_CACHE_HOME=/cache

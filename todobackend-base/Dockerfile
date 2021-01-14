@@ -12,8 +12,8 @@ RUN apt-get update && \
 
 
 # Create virtual envrionment
-RUN virtualenv /appenv && \
-    . /appenv/bin/activate && \
+RUN virtualenv /appenv
+RUN . /appenv/bin/activate && \
     pip install pip --upgrade
 
 # Add entrypoint script
