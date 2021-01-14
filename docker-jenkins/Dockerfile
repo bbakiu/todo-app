@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Change user to root
 USER root
 
-AUN apt-get update &&\
+RUN apt-get update &&\
 apt-get install build-essential -y
 
 RUN apt-get update && \
