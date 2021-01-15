@@ -3,10 +3,13 @@ FROM bujarbakiu/todo:latest
 LABEL author=bujarbakiu
 
 # Install dev/build dependencies
-RUN apt-get update && \
-    apt-get install -qy python-dev libmysqlclient-dev
+RUN apk upgrade --update && \
+    apk add --no-cache python3 python3-dev
 
+RUN apk add --no-cache mysql-client
 # Activate virtual env and install wheel support
+RUN pip --version
+RUN python -m pip install --user --upgrade pip
 RUN pip install wheel --upgrade
 
 # PIP envrionment varibales 
@@ -24,7 +27,7 @@ RUN chmod +x /usr/local/bin/test.sh
 
 # Set dafaults for entrypoint and command string
 ENTRYPOINT ["test.sh"]
-CMD ["python", "manage.py", "test", "--noinput"]
+CMD ["python3", "manage.py", "test", "--noinput"]
 
 COPY src /application
 WORKDIR /application
